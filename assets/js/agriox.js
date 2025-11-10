@@ -749,29 +749,7 @@
 
 
 
-  if ($(".mobile-nav__container .main-menu__list").length) {
-    let dropdownAnchor = $(
-      ".mobile-nav__container .main-menu__list .dropdown > a"
-    );
-    dropdownAnchor.each(function () {
-      let self = $(this);
-      let toggleBtn = document.createElement("BUTTON");
-      toggleBtn.setAttribute("aria-label", "dropdown toggler");
-      toggleBtn.innerHTML = "<i class='fa fa-angle-down'></i>";
-      self.append(function () {
-        return toggleBtn;
-      });
-      self.find("button").on("click", function (e) {
-        e.preventDefault();
-        let self = $(this);
-        self.toggleClass("expanded");
-        self.parent().toggleClass("expanded");
-        self.parent().parent().children("ul").slideToggle();
-      });
-    });
-  }
-
-
+ // ...existing code...
   if ($(".mobile-nav__toggler").length) {
     $(".mobile-nav__toggler").on("click", function (e) {
       e.preventDefault();
@@ -779,6 +757,38 @@
       $("body").toggleClass("locked");
     });
   }
+
+  // close mobile nav + smooth scroll when clicking menu links (ignore parent items with submenu)
+  if ($(".mobile-nav__container .main-menu__list, .mobile-nav__wrapper .main-menu__list").length) {
+    $(
+      ".mobile-nav__container .main-menu__list a, .mobile-nav__wrapper .main-menu__list a"
+    ).on("click", function (e) {
+      var $link = $(this);
+      var href = $link.attr("href") || "";
+      // if this item has a submenu, don't treat it as a navigation link
+      if ($link.siblings("ul").length) {
+        return;
+      }
+      // if it's a hash link to an element on the page -> smooth scroll and close menu
+      if (href.indexOf("#") !== -1) {
+        var hash = href.slice(href.indexOf("#"));
+        if (hash && $(hash).length) {
+          e.preventDefault();
+          var $target = $(hash);
+          $("html, body").animate(
+            {
+              scrollTop: $target.offset().top,
+            },
+            700
+          );
+        }
+      }
+      // close mobile nav in all cases (external links will still navigate away)
+      $(".mobile-nav__wrapper").removeClass("expanded");
+      $("body").removeClass("locked");
+    });
+  }
+// ...existing code...
 
 
   if ($(".search-toggler").length) {
