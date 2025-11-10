@@ -10532,6 +10532,13 @@ Sidebar
   }
 }
 
+
+@media (min-width: 1200px ) and (max-width: 1288px) {
+  .main-header--one__bottom-middel .logo{
+    position: relative;
+    right: 600px ;
+  }
+}
 .cta-one__boxed__inner::before {
   display: none;
 }
