@@ -791,6 +791,47 @@
 // ...existing code...
 
 
+// filepath: [agriox.js](http://_vscodecontentref_/2)
+// ...existing code...
+  // project popup (image + details)
+  $(document).on("click", "a.project-popup", function (e) {
+    e.preventDefault();
+    var $el = $(this);
+    var img = $el.data("img") || "";
+    var title = $el.data("title") || "";
+    var category = $el.data("category") || "";
+    var desc = $el.data("desc") || "";
+    var markup =
+      '<div class="mfp-project-popup">' +
+        '<button title="Close (Esc)" type="button" class="mfp-close">×</button>' +
+        '<div class="project-popup-inner">' +
+          '<div class="project-popup-image"><img src="' + img + '" alt="' + title + '"></div>' +
+          '<div class="project-popup-details">' +
+            '<span class="project-popup-category">' + category + '</span>' +
+            '<h3 class="project-popup-title">' + title + '</h3>' +
+            '<p class="project-popup-desc">' + desc + '</p>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    $.magnificPopup.open({
+      items: { src: markup },
+      type: "inline",
+      removalDelay: 300,
+      mainClass: "mfp-fade",
+      closeBtnInside: true,
+      callbacks: {
+        open: function() {
+          // optional: focus or animations
+        },
+        close: function() {
+          // cleanup if needed
+        }
+      }
+    });
+  });
+// ...existing code...
+
   if ($(".search-toggler").length) {
     $(".search-toggler").on("click", function (e) {
       e.preventDefault();

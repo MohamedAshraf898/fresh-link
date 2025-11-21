@@ -3788,7 +3788,12 @@ button {
     max-width: none;
   }
 }
-
+@media (min-width: 992px) {
+ .ss{
+  height: 1200px;
+  
+ }
+}
 .providing-quality-one__image__line {
   width: 41px;
   height: 39px;
@@ -3799,6 +3804,16 @@ button {
   right: 480px;
 }
 
+
+/* project popup styles */
+.mfp-project-popup { max-width: 900px; margin: 0 auto; padding: 20px; }
+.mfp-project-popup .project-popup-inner { display: flex; gap: 20px; align-items: flex-start; }
+.mfp-project-popup .project-popup-image img { width: 420px; max-width: 100%; height: auto; display: block; border-radius: 4px; }
+.mfp-project-popup .project-popup-details { flex: 1; }
+.mfp-project-popup .project-popup-category { display:block; color: #EF7E16; font-weight:700; margin-bottom:8px; }
+.mfp-project-popup .project-popup-title { margin:0 0 10px; font-size: 24px; }
+.mfp-project-popup .project-popup-desc { color: #666; line-height:1.5; }
+.mfp-project-popup .mfp-close { position: absolute; right: 12px; top: 8px; font-size: 30px; color: #333; background: transparent; border: 0; cursor: pointer; }
 .providing-quality-one__content-box {
   position: relative;
   display: block;
@@ -9838,6 +9853,11 @@ Sidebar
   }
   .providing-quality-one__content-box-list-item .text {
     padding-left: 25px;
+    
+  }
+  .providing-quality-one__content-box-list-item .text h3{
+    padding-left: 25px;
+    font-size: 18px !important;
   }
   .providing-quality-one__content-box .sec-title__title {
     font-size: 38px;
