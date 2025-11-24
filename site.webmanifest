@@ -1,0 +1,19 @@
+{
+  "name": "Fresh Link",
+  "short_name": "FreshLink",
+  "start_url": "/",
+  "display": "standalone",
+ 
+  "icons": [
+    {
+      "src": "/assets/images/resources/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/resources/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
